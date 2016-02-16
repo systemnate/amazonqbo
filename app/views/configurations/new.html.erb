@@ -1,5 +1,14 @@
 <%= form_for @configuration do |f| %>
-
+  <% if @configuration.errors.any? %>
+    <h2><%= pluralize(@configuration.errors.count, "error") %> prevented this form from being saved:</h2>
+    <div class="errors">
+      <ul>
+      <% @configuration.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
   <p>
     <%= f.label :primary_marketplace_id, "Primary Marketplace ID" %><br/>
     <%= f.text_field :primary_marketplace_id %>

@@ -20,4 +20,19 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      configuration:
+        primary_marketplace_id: "Primary Marketplace ID"
+        merchant_id: "Merchant ID"
+        auth_token: "Authorization Token"
+    errors:
+      models:
+        user:
+          attributes:
+            primary_marketplace_id:
+              blank: "is required"
+            merchant_id:
+              blank: "is required"
+            auth_token:
+              blank: "is required"
