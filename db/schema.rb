@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160216210312) do
+ActiveRecord::Schema.define(version: 20160216220840) do
+
+  create_table "configurations", force: :cascade do |t|
+    t.string   "primary_marketplace_id"
+    t.string   "merchant_id"
+    t.string   "auth_token"
+    t.integer  "user_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "configurations", ["user_id"], name: "index_configurations_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

@@ -1,0 +1,19 @@
+<%= form_for @configuration do |f| %>
+
+  <p>
+    <%= f.label :primary_marketplace_id, "Primary Marketplace ID" %><br/>
+    <%= f.text_field :primary_marketplace_id %>
+  </p>
+
+  <p>
+    <%= f.label :merchant_id, "Merchant ID" %><br/>
+    <%= f.text_field :merchant_id %>
+  </p>
+
+  <p>
+    <%= f.label :auth_token, "Authorization Token" %><br/>
+    <%= f.text_field :auth_token %>
+  </p>
+
+  <%= f.submit %>
+<% end %>
