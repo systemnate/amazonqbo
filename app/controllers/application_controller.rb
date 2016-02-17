@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
   def check_user
     if params[:user_id].to_i != current_user.id
-      flash[:error] = "Restricted.  You cannot view another user's data."
+      flash[:danger] = "Restricted.  You cannot view another user's data."
       redirect_to root_path
     end
   end

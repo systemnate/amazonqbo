@@ -5,7 +5,7 @@ feature "signing in" do
     user = create(:user, email: "test@test.com", name: "Test User")
 
     visit root_path
-    click_link "Sign in"
+    click_link "Sign In"
     fill_in "Email", with: user.email
     fill_in "Password", with: user.password
     click_button "Log in"
