@@ -1,13 +1,13 @@
 FactoryGirl.define do
-  factory :configuration do
-    primary_marketplace_id "MyString"
-    merchant_id "MyString"
-    auth_token "MyString"
-    user nil
-  end
   factory :user do
     name "John Smith"
-    email "jsmith@example.com"
+    email FFaker::Internet.email
     password "password"
+  end
+
+  factory :configuration do
+    primary_marketplace_id "primary_marketplace_id"
+    merchant_id "merchant_id"
+    auth_token "auth_token"
   end
 end

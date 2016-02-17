@@ -1,0 +1,18 @@
+<h1>Configuration Settings</h1>
+
+<% if @configuration %>
+  <table class="table">
+    <thead>
+      <th>Primary Marketplace ID</th>
+      <th>Merchant ID</th>
+      <th>Authorization Token</th>
+    </thead>
+    <tbody>
+        <td><%= @configuration.primary_marketplace_id %></td>
+        <td><%= @configuration.merchant_id %></td>
+        <td><%= @configuration.auth_token %></td>
+    </tbody>
+  </table>
+<% else %>
+  <p>You have not entered your Amazon credentials yet!</p>
+<% end %>

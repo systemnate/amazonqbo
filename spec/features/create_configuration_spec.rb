@@ -4,7 +4,7 @@ feature "Create configuration" do
   before do
     user = create(:user)
     sign_in_as!(user)
-    visit new_configuration_path
+    visit new_user_configuration_path(user)
   end
 
   scenario "successfully" do

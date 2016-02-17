@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
-
   root "home#index"
-  resources :users, only: [:show]
-  resources :configurations
+  devise_for :users
+  resources :users do
+    resources :configurations
+  end
 end

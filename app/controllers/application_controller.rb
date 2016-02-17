@@ -12,7 +12,15 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
   def after_sign_in_path_for(resource)
     user_path(current_user) 
+  end
+
+  def check_user
+    if params[:user_id].to_i != current_user.id
+      flash[:error] = "Restricted.  You cannot view another user's data."
+      redirect_to root_path
+    end
   end
 end

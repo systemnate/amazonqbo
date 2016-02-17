@@ -1,18 +1,24 @@
 class ConfigurationsController < ApplicationController
+  before_action :check_user
+
   def new
     @user = current_user
-    @configuration = @user.configurations.new
+    @configuration = @user.build_configuration
   end
 
   def create
     @user = current_user
-    @configuration = @user.configurations.new(configurations_params)
+    @configuration = @user.build_configuration(configurations_params)
     if @configuration.save
       flash[:success] = "Configuration was successfully created."
       redirect_to @user
     else
       render :new
     end
+  end
+
+  def show
+    @configuration = current_user.configuration
   end
 
   private

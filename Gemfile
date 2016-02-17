@@ -18,6 +18,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails'
   gem 'ffaker'
+  gem 'database_cleaner'
 end
 
 group :development do
@@ -26,6 +27,7 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'shoulda-matchers'
 end
 
 gem "codeclimate-test-reporter", group: :test, require: nil
