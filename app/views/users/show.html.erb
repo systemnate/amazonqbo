@@ -1,5 +1,5 @@
-<h1>Welcome, <%= @user.email %>!</h1>
-
+<h1>Welcome, <%= @user.name %>!</h1>
+<p>Your current email address is <%= @user.email %></p>
 <% if @user.configurations.empty? %>
   <p>It looks like you have not entered your Amazon MWS credentials yet!  Why not <%= link_to "enter your credentials now?", new_configuration_path %></p>
 <% end %>

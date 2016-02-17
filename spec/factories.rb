@@ -6,7 +6,8 @@ FactoryGirl.define do
     user nil
   end
   factory :user do
-    email "testuser@example.com"
+    name "John Smith"
+    email "jsmith@example.com"
     password "password"
   end
 end

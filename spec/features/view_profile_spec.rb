@@ -5,6 +5,6 @@ feature "View user profile" do
     user = create(:user)
     visit user_path(user)
     
-    expect(page).to have_content("Welcome, #{user.email}!")
+    expect(page).to have_content("Welcome, #{user.name}!")
   end
 end
