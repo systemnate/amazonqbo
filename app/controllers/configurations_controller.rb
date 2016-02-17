@@ -7,13 +7,7 @@ class ConfigurationsController < ApplicationController
   end
 
   def create
-    @configuration = @user.build_configuration(configuration_params)
-    if @configuration.save
-      flash[:success] = "Configuration was successfully created."
-      redirect_to [@user, @configuration]
-    else
-      render :new
-    end
+    create_update_configuration("Configuration was successfully created.", :new)
   end
 
   def edit
@@ -21,13 +15,7 @@ class ConfigurationsController < ApplicationController
   end
 
   def update
-    @configuration = @user.build_configuration(configuration_params)
-    if @configuration.save
-      flash[:success] = "Configuration was successfully updated."
-      redirect_to [@user, @configuration]
-    else
-      render :edit
-    end
+    create_update_configuration("Configuration was successfully updated.", :edit)
   end
 
   def show
@@ -42,5 +30,15 @@ class ConfigurationsController < ApplicationController
 
   def set_user
     @user = current_user
+  end
+
+  def create_update_configuration(flash_message, action)
+    @configuration = @user.build_configuration(configuration_params)
+    if @configuration.save
+      flash[:success] = flash_message
+      redirect_to [@user, @configuration]
+    else
+      render action
+    end
   end
 end
