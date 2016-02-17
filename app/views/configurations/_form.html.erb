@@ -1,0 +1,35 @@
+<div>
+<h2>Click on <%= link_to "this", "https://sellercentral.amazon.com/gp/mws/registration/register.html", target: "_blank" %> link to find out how to obtain your credentials.</h2>
+<p>Please use the following information:</p>
+<ul>
+  <li>Application Name: It's Ridic!</li>
+  <li>Application's Developer Account Number: 6522-3791-2810</li>
+</ul>
+<%= form_for [@user, @configuration] do |f| %>
+  <% if @configuration.errors.any? %>
+    <h2><%= pluralize(@configuration.errors.count, "error") %> prevented this form from being saved:</h2>
+    <div class="errors">
+      <ul>
+      <% @configuration.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :primary_marketplace_id, "Primary Marketplace ID (Marketplace ID)" %><br/>
+    <%= f.text_field :primary_marketplace_id %>
+  </p>
+
+  <p>
+    <%= f.label :merchant_id, "Merchant ID (Seller ID)" %><br/>
+    <%= f.text_field :merchant_id %>
+  </p>
+
+  <p>
+    <%= f.label :auth_token, "Authorization Token (MWS Auth Token)" %><br/>
+    <%= f.text_field :auth_token %>
+  </p>
+
+  <%= f.submit %>
+<% end %>

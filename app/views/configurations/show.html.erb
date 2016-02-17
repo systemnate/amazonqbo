@@ -13,6 +13,7 @@
         <td><%= @configuration.auth_token %></td>
     </tbody>
   </table>
+  <%= link_to "Edit", edit_user_configuration_path(@user, @configuration), class: "btn btn-primary" %>
 <% else %>
   <p>You have not entered your Amazon credentials yet!</p>
 <% end %>
