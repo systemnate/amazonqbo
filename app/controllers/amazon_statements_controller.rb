@@ -1,4 +1,6 @@
 class AmazonStatementsController < ApplicationController
+  before_action :check_user
+
   def index
     @amazon_statements = AmazonStatement.all
   end
