@@ -2,7 +2,7 @@ class AmazonStatementsController < ApplicationController
   before_action :check_user
 
   def index
-    @amazon_statements = AmazonStatement.all
+    @amazon_statements = AmazonStatement.all.order("period DESC")
   end
 
   def fetch
@@ -31,8 +31,10 @@ class AmazonStatementsController < ApplicationController
     )
   end
 
-  def fetch_reports(client, reports)
-    reports.xml['GetReportListResponse']['GetReportListResult']['ReportInfo'].each do |report|
+  def fetch_reports(client, reports, next_token = false)
+    report_param = { true =>  { 1 => "GetReportListByNextTokenResponse", 2 => "GetReportListByNextTokenResult" },
+                     false => { 1 => "GetReportListResponse", 2 => "GetReportListResult" } }
+    reports.xml[report_param[next_token][1]][report_param[next_token][2]]['ReportInfo'].each do |report|
       type = report['ReportType']
       if type.include?('_GET_V2_SETTLEMENT_REPORT_DATA_XML_')
         report_id = report['ReportId']
@@ -56,24 +58,11 @@ class AmazonStatementsController < ApplicationController
   end
 
   def fetch_rest_of_reports(client, next_token)
-    while(true)
+    loop do
       break if next_token == false
       reports = client.get_report_list_by_next_token(next_token)
       next_token = reports.next_token
-      fetch_reports_by_next_token(client, reports)
-    end
-  end
-
-  def fetch_reports_by_next_token(client, reports)
-    reports.xml['GetReportListByNextTokenResponse']['GetReportListByNextTokenResult']['ReportInfo'].each do |report|
-      type = report['ReportType']
-      if type.include?('_GET_V2_SETTLEMENT_REPORT_DATA_XML_')
-        report_id = report['ReportId']
-        item_to_add = client.get_report(report_id).xml['AmazonEnvelope']['Message']['SettlementReport']
-        add_statement_to_db(item_to_add)
-      else
-        next
-      end             
+      fetch_reports(client, reports, true)
     end
   end
 end
