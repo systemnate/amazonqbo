@@ -1,0 +1,26 @@
+<table class="table statements">
+  <thead>
+    <th>Settlement Period</th>
+    <th>Beginning Balance</th>
+    <th>Product Charges</th>
+    <th>Promo Rebates</th>
+    <th>Amazon Fees</th>
+    <th>Other</th>
+    <th>Deposit</th>
+    <th>Status</th>
+  </thead>
+  <tbody>
+    <% @amazon_statements.each do |as| %>
+    <tr>
+      <td><%= as.period %></td>
+      <td><%= as.beginning_balance %></td>
+      <td><%= as.product_charges %></td>
+      <td><%= as.promo_rebates %></td>
+      <td><%= as.amazon_fees %></td>
+      <td><%= as.other %></td>
+      <td><%= as.deposit_total %></td>
+      <td><%= as.status %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -1,6 +1,10 @@
-<div class="jumbotron">
-  <h1>Welcome!</h1>
-  <p>To the Amazon MWS to QBO Application</p>
-</div>
+<% if !signed_in? %>
+  <div class="jumbotron">
+    <h1>Welcome!</h1>
+    <p>To the Amazon MWS to QBO Application</p>
+  </div>
 
-<%= link_to "Sign up!", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+  <%= link_to "Sign up!", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+<% else %>
+  <p>Welcome! <%= link_to "View/Pull Amazon Reports", "#" %></p>
+<% end %>

@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :configurations
   end
+  resources :users do
+    resources :amazon_statements
+  end
 end
