@@ -12,6 +12,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+gem 'font-awesome-rails'
+gem 'peddler'
 
 group :development, :test do
   gem 'byebug'
@@ -20,6 +22,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'ffaker'
   gem 'database_cleaner'
+  gem 'dotenv-rails'
 end
 
 group :development do

@@ -1,13 +1,10 @@
 FactoryGirl.define do
   factory :amazon_statement do
+    settlement_id "1234"
     period "MyString"
-    beginning_balance "9.99"
-    product_charges "9.99"
-    promo_rebates "9.99"
-    amazon_fees "9.99"
-    other "9.99"
     deposit_total "9.99"
     status "MyString"
+    summary "ABCD"
   end
   factory :user do
     name "John Smith"

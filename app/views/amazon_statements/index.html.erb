@@ -1,26 +1,39 @@
 <table class="table statements">
   <thead>
-    <th>Settlement Period</th>
-    <th>Beginning Balance</th>
-    <th>Product Charges</th>
-    <th>Promo Rebates</th>
-    <th>Amazon Fees</th>
-    <th>Other</th>
-    <th>Deposit</th>
+    <th>Settlement ID</th>
+    <th>Period</th>
+    <th>Deposit Total</th>
     <th>Status</th>
   </thead>
   <tbody>
     <% @amazon_statements.each do |as| %>
     <tr>
+      <td><%= as.settlement_id %></td>
       <td><%= as.period %></td>
-      <td><%= as.beginning_balance %></td>
-      <td><%= as.product_charges %></td>
-      <td><%= as.promo_rebates %></td>
-      <td><%= as.amazon_fees %></td>
-      <td><%= as.other %></td>
       <td><%= as.deposit_total %></td>
       <td><%= as.status %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
+
+<%= link_to "Fetch", fetch_user_amazon_statements_path(current_user), remote: true, class: "btn btn-success btn-sm" %>
+<div class="spinner">
+  <i class="fa fa-refresh fa-spin"></i>
+  <small>Retrieving data from amazon, please wait...</small>
+</div>
+
+<script>
+$( document ).ready(function() {
+  $(".spinner").hide();
+
+  $(document).ajaxStart(function(){
+    $(".spinner").show();
+  });
+
+  $(document).ajaxStop(function(){
+    $(".spinner").hide();
+    location.reload();
+  });
+});
+</script>

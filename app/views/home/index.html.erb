@@ -6,5 +6,5 @@
 
   <%= link_to "Sign up!", new_user_registration_path, class: "btn btn-primary btn-lg" %>
 <% else %>
-  <p>Welcome! <%= link_to "View/Pull Amazon Reports", "#" %></p>
+  <p>Welcome! <%= link_to "View/Pull Amazon Reports", user_amazon_statements_path(current_user) %></p>
 <% end %>

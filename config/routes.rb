@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :configurations
   end
   resources :users do
-    resources :amazon_statements
+    resources :amazon_statements do
+      get :fetch, :on => :collection
+    end
   end
 end
