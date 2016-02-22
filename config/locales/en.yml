@@ -19,20 +19,27 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
+---
 en:
   activerecord:
     attributes:
       configuration:
-        primary_marketplace_id: "Primary Marketplace ID"
-        merchant_id: "Merchant ID"
-        auth_token: "Authorization Token"
+        auth_token: Authorization Token
+        merchant_id: Merchant ID
+        primary_marketplace_id: Primary Marketplace ID
     errors:
       models:
         user:
           attributes:
-            primary_marketplace_id:
-              blank: "is required"
-            merchant_id:
-              blank: "is required"
             auth_token:
-              blank: "is required"
+              blank: is required
+            merchant_id:
+              blank: is required
+            primary_marketplace_id:
+              blank: is required
+  users:
+    show:
+      profile-email-address: Your current email address is %{email}.
+      profile-enter-credentials: enter your credentials now?
+      profile-no-amazon-credentials: 'It looks like you have not entered your Amazon MWS credentials yet! Why not '
+      profile-welcome: Welcome, %{name}!

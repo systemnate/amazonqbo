@@ -1,6 +1,16 @@
-<h1>Welcome, <%= @user.name %>!</h1>
-<p>Your current email address is <%= @user.email %></p>
-<% unless @user.configuration.present? %>
-  <p>It looks like you have not entered your Amazon MWS credentials yet!  Why not 
-    <%= link_to "enter your credentials now?", new_user_configuration_path(@user) %></p>
-<% end %>
+<div class="row">
+  <div class="col-md-12">
+    <h1>Welcome, <%= @user.name %>!</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <%= gravatar_for(@user) %>
+  </div>
+  <div class="col-md-5 contact-information">
+    <p><strong>Contact Information</strong></p>
+    <p><%= mail_to @user.email, @user.email %></p>
+    <p><%= link_to "Edit Profile", edit_user_registration_path(@user), class: "btn btn-primary" %></p>
+  </div>
+</div>
